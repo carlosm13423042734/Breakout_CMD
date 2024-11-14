@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int lives;
     private int bloquesRestantes;
+    public static GameManager Instance { get; private set; }
 
     public int Lives { get { return lives; } }
     public int BloquesRestantes { get; set; }
