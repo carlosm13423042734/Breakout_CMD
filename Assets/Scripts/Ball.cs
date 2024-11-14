@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Transform paddle;
     private Vector2 initialLocalPosition;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,20 @@ public class Ball : MonoBehaviour
     {
         LaunchBall();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject objectGameManager = GameObject.FindGameObjectWithTag("GameManager");
+        GameManager gameManager = objectGameManager.GetComponent<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.SubstractLives();
+            this.ResetBallPosition();
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         var objectDamagable = collision.gameObject.GetComponent<IDamagable>();
         if (objectDamagable != null)
         {
@@ -51,6 +64,7 @@ public class Ball : MonoBehaviour
             this.rigidbody2D.velocity = newDirection.normalized * this.launchSpeed;
 
         }
+
     }
     private void LaunchBall()
     {
