@@ -6,6 +6,7 @@ using UnityEngine;
 public class Block : MonoBehaviour, IDamagable
 {
     private int hits = 1;
+    //private Potenciador potenciador;
     private BlockType type;
     void Awake() {
         switch (type)
@@ -39,10 +40,15 @@ public class Block : MonoBehaviour, IDamagable
     public void TakeDamage() {
 
         this.hits--;
-        if (this.hits <= 0) { 
+        if (this.hits <= 0) {
+            //if (potenciador != null)
+            //{
+            //    potenciador.Ejecuta();
+            //}
             Destroy(this.gameObject);
         }
         GameManager.Instance.CountBlocks();
+        
     }
 
 }
