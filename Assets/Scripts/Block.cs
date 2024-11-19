@@ -39,11 +39,12 @@ public class Block : MonoBehaviour, IDamagable
     public void TakeDamage() {
 
         this.hits--;
-        if (this.hits <= 0)
-        Destroy(this.gameObject);
-
-        
+        if (this.hits <= 0) { 
+            Destroy(this.gameObject);
+        }
+        GameManager.Instance.CountBlocks();
     }
+
 }
 public enum BlockType { 
     Big,

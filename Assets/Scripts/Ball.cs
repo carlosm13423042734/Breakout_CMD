@@ -30,14 +30,9 @@ public class Ball : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        GameObject objectGameManager = GameObject.FindGameObjectWithTag("GameManager");
-        GameManager gameManager = objectGameManager.GetComponent<GameManager>();
-        if (gameManager != null)
-        {
-            gameManager.SubstractLives();
-            this.ResetBallPosition();
-        }
+    {      
+          GameManager.Instance.SubstractLives();
+          this.ResetBallPosition();     
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
