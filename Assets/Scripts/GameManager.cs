@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         if (this.lives <= 0) {
             Debug.Log("Game over");
             SceneManager.LoadScene("GameOver");
+            this.lives = 3;
             
         }
     }

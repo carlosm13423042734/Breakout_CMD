@@ -1,29 +1,24 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Block : MonoBehaviour, IDamagable
 {
     private int hits = 1;
-    //private Potenciador potenciador;
-    private BlockType type;
+    public GameObject block; 
+    public float minX = -4.4f;
+    public float maxX = 4.1f;
+    public float minY = 1.5f;
+    public float maxY = 3.8f;
+   
+
+    private PowerUp powerUp;
     void Awake() {
-        switch (type)
-        {
-            case BlockType.Normal:
-
-                break;
-
-            case BlockType.Big:
-
-                break;
-
-            case BlockType.Small:
-
-                break;
-
-        }
+        //this.spriteRenderer = GetComponent<SpiteRenderer>();
+        //this.SetInitialSprite();
+        //this.powerUp = PowerUpFactory.CreatePowerUp();
     }
     // Start is called before the first frame update
     void Start()
@@ -46,15 +41,26 @@ public class Block : MonoBehaviour, IDamagable
             //    potenciador.Ejecuta();
             //}
             Destroy(this.gameObject);
+            GenerarBloque();
+           
         }
         GameManager.Instance.CountBlocks();
         
     }
+    private void SetInitialSprite() {
 
-}
-public enum BlockType { 
-    Big,
-    Normal,
-    Small
+        //this.normalSprite = Resources.Load<Sprite>($"Sprites/{type}"):
+        //this.brokenSprite = Resource.Load<Sprite>($"Sprites/{type}Broken");
+        //this.spriteRenderer.sprite = normalSprite;
+    }
+    private void GenerarBloque() {
+        
+        float x = Random.Range(minX, maxX);
+        float y = Random.Range(minY, maxY);
+        Vector3 vector = new Vector3(x, y, 0);
+        GameObject blockClone = (GameObject)Instantiate(block, vector, Quaternion.identity);
+        blockClone.AddComponent<BoxCollider2D>();
+        blockClone.AddComponent<Block>();
 
+    }
 }

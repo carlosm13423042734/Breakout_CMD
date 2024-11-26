@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
 {
 
     private bool isLaunched = false;
-    private float launchSpeed = 12.5f;
+    private float launchSpeed = 12.0f;
     private Rigidbody2D rigidbody2D;
     private Transform paddle;
     private Vector2 initialLocalPosition;
