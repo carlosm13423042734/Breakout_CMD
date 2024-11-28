@@ -53,14 +53,28 @@ public class Block : MonoBehaviour, IDamagable
         //this.brokenSprite = Resource.Load<Sprite>($"Sprites/{type}Broken");
         //this.spriteRenderer.sprite = normalSprite;
     }
-    private void GenerarBloque() {
-        
-        float x = Random.Range(minX, maxX);
-        float y = Random.Range(minY, maxY);
-        Vector3 vector = new Vector3(x, y, 0);
+    private void GenerarBloque()
+    {
+        bool posicionValida = false;
+        Vector3 vector = Vector3.zero;
+
+        while (!posicionValida)
+        {
+            float x = Random.Range(minX, maxX);
+            float y = Random.Range(minY, maxY);
+            vector = new Vector3(x, y, 0);
+            Vector2 blockSize = new Vector2(x, y);
+            blockSize = block.GetComponent<SpriteRenderer>().bounds.size;
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(vector, blockSize, 0);
+            if (colliders.Length == 0)
+            {
+                posicionValida = true;
+            }
+        }
         GameObject blockClone = (GameObject)Instantiate(block, vector, Quaternion.identity);
         blockClone.AddComponent<BoxCollider2D>();
         blockClone.AddComponent<Block>();
-
     }
+
+
 }

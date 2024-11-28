@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManagerSingleton : MonoBehaviour
 {
+    
     private static GameManagerSingleton instance;
     public static GameManagerSingleton Instance
+
     {
         get
         {
