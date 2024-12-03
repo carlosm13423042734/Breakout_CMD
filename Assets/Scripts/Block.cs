@@ -12,13 +12,11 @@ public class Block : MonoBehaviour, IDamagable
     public float maxX = 4.1f;
     public float minY = 1.5f;
     public float maxY = 3.8f;
-   
+    SpriteRenderer spriteRenderer;
 
     private PowerUp powerUp;
     void Awake() {
-        //this.spriteRenderer = GetComponent<SpiteRenderer>();
-        //this.SetInitialSprite();
-        //this.powerUp = PowerUpFactory.CreatePowerUp();
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -36,24 +34,17 @@ public class Block : MonoBehaviour, IDamagable
 
         this.hits--;
         if (this.hits <= 0) {
-            //if (potenciador != null)
-            //{
-            //    potenciador.Ejecuta();
-            //}
             Destroy(this.gameObject);
+            this.spriteRenderer = GetComponent<SpriteRenderer>();
+            this.powerUp = PowerUpFactory.CreatePowerUp();
             GenerarBloque();
            
         }
         GameManager.Instance.CountBlocks();
         
     }
-    private void SetInitialSprite() {
-
-        //this.normalSprite = Resources.Load<Sprite>($"Sprites/{type}"):
-        //this.brokenSprite = Resource.Load<Sprite>($"Sprites/{type}Broken");
-        //this.spriteRenderer.sprite = normalSprite;
-    }
-    private void GenerarBloque()
+    
+    public void GenerarBloque()
     {
         bool posicionValida = false;
         Vector3 vector = Vector3.zero;

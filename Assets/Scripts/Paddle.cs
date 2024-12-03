@@ -26,7 +26,7 @@ public class Paddle : MonoBehaviour, IDamagable
         MovimientoPala();
     }
 
-    private void ExtraerLimites() {
+    public void ExtraerLimites() {
 
         var anchoPala = this.GetComponent<SpriteRenderer>().bounds.size.x;
         var anchoIzquierda = this.paredIzq.GetComponent<SpriteRenderer>().bounds.size.x;

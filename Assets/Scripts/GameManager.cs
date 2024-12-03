@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public void SubstractLives(){
         this.lives--;
         if (this.lives <= 0) {
-            Debug.Log("Game over");
             SceneManager.LoadScene("GameOver");
             this.lives = 3;
             

@@ -8,6 +8,7 @@ TagManager:
   - kill
   - GameManager
   - block
+  - Paddle
   layers:
   - Default
   - TransparentFX
