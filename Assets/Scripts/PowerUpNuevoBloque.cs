@@ -12,6 +12,7 @@ namespace Assets.Scripts
        
         public override void Execute()
         {
+            //Potenciador que genera un nuevo bloque
             var bloque = GameObject.FindGameObjectWithTag("block");
             if (bloque != null)
             {

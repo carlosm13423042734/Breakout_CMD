@@ -15,21 +15,8 @@ public class Block : MonoBehaviour, IDamagable
     SpriteRenderer spriteRenderer;
 
     private PowerUp powerUp;
-    void Awake() {
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
+   
+    //Método de la interfaz IDamagable donde al chocar con la bola, pierde la vida que tiene, se destruyem suma los puntos y genera un nuevo bloque
     public void TakeDamage() {
 
         this.hits--;
@@ -43,7 +30,7 @@ public class Block : MonoBehaviour, IDamagable
         }
         
     }
-    
+    //Este método instancia un nuevo bloque en una posición vacía y que esté dentro de unos límites
     public void GenerarBloque()
     {
         bool posicionValida = false;

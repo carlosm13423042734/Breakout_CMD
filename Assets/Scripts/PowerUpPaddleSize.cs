@@ -4,6 +4,7 @@ public class PowerUpPaddleSize : PowerUp
 {
     public override void Execute()
     {
+        //Este potenciador cambiará el tamaño de la pala, pudiendo ser más pequeño o más grande
         var paddle = GameObject.FindGameObjectWithTag("Paddle");
         if (paddle != null)
         {

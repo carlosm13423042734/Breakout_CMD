@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Clase donde muestra los puntos al usuario
 public class UIPoints : MonoBehaviour
 {
 
@@ -12,7 +13,6 @@ public class UIPoints : MonoBehaviour
         this.text = GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         if (this.text != null)

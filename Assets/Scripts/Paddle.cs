@@ -25,7 +25,7 @@ public class Paddle : MonoBehaviour, IDamagable
     {
         MovimientoPala();
     }
-
+    //Método para calcular los límites por donde se puede mover la pala(Siempre entre las paredes)
     public void ExtraerLimites() {
 
         var anchoPala = this.GetComponent<SpriteRenderer>().bounds.size.x;
@@ -35,7 +35,7 @@ public class Paddle : MonoBehaviour, IDamagable
         limiteDerecho = this.paredDerecha.transform.position.x + anchoDerecha / 2 - anchoPala / 2;
         limiteIzquierdo = this.paredIzq.transform.position.x + anchoIzquierda / 2 + anchoPala / 2;
     }
-
+    //Método para que la pala se mueva correctamente
     private void MovimientoPala() {
         float direccionMovimiento = Input.GetAxisRaw("Horizontal");
         float posicionActualX = this.transform.position.x;

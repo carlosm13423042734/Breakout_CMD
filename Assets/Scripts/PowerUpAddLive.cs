@@ -10,6 +10,7 @@ namespace Assets.Scripts
     {
         public override void Execute()
         {
+            //Potenciador que añade una vida si tienes menos de 5
             if (GameManager.Instance.Lives < 5)
             {
                 GameManager.Instance.addLives();

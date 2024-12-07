@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     private Vector2 initialLocalPosition;
     GameManager gameManager;
 
-    // Start is called before the first frame update
+    // Al empezar, deja la boola en su posición inicial
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -28,7 +28,7 @@ public class Ball : MonoBehaviour
     {
         LaunchBall();
     }
-
+    //Cuando la pelota choca contra el elemento vacío de abajo, el jugador pierde una vida y devuelve la bola a la posición inicial
     private void OnTriggerEnter2D(Collider2D collision)
     {      
           GameManager.Instance.SubstractLives();
@@ -36,13 +36,13 @@ public class Ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        //Si el objeto con el que choca tiene implementada la interfaz IDamagable, ejecutará el método TakeDamage
         var objectDamagable = collision.gameObject.GetComponent<IDamagable>();
         if (objectDamagable != null)
         {
             objectDamagable.TakeDamage();
         }
-
+        //Esto es para que al chocar con la pala, devuelva la bola con una dirección determinada
         var objectPaddle = collision.gameObject.GetComponent<Paddle>();
         if (objectPaddle != null) { 
         
@@ -61,6 +61,7 @@ public class Ball : MonoBehaviour
         }
 
     }
+    //Método para lanzar la bola al pulsar el espacio y empezar a jugar. Se lanza con una dirección aleatoria y también lo separa del paddle
     private void LaunchBall()
     {
 
@@ -75,6 +76,7 @@ public class Ball : MonoBehaviour
             this.rigidbody2D.velocity = launchDirection * launchSpeed;
         }
     }
+    //Método para cuando el usuario pierde una vida o empieza el juego, ponga la bola en su lugar y como hija del paddle.
     public void ResetBallPosition() {
         isLaunched = false;
         rigidbody2D.velocity = Vector2.zero;

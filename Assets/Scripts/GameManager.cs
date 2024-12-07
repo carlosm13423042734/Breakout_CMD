@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//Esta clase es la que maneja el numero de vidas y los puntos que tiene el jugador en cada partida.
 public class GameManager : MonoBehaviour
 {
     [SerializeField]

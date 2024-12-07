@@ -2,7 +2,7 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Clase donde se generan los distintos PowerUps con sus probabilidades
 public class PowerUpFactory 
 {
     public static PowerUp CreatePowerUp() {
