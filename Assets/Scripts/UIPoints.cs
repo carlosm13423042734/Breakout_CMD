@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiLives : MonoBehaviour
+public class UIPoints : MonoBehaviour
 {
+
     private Text text;
-   
-    private void Awake()
+    void Start()
     {
         this.text = GetComponent<Text>();
     }
 
-    private void LateUpdate()
+    // Update is called once per frame
+    void LateUpdate()
     {
         if (this.text != null)
         {
-            this.text.text = $"Vidas: {GameManager.Instance.Lives}";
+            this.text.text = $"PUNTOS: {GameManager.Instance.Points}";
         }
     }
 }

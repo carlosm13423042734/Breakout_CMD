@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private int lives;
+    private int points;
     private int bloquesRestantes = 0;
     public static GameManager Instance { get; private set; }
 
     public int Lives { get { return lives; } }
-    
+    public int Points { get { return points; } }
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         this.lives = 3;
+        this.points = 0;
         
     }
     public void SubstractLives(){
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
         if (this.lives <= 0) {
             SceneManager.LoadScene("GameOver");
             this.lives = 3;
-            
+            this.points = 0;
         }
     }
     public void addLives() { 
@@ -39,5 +41,8 @@ public class GameManager : MonoBehaviour
     }
     public void CountBlocks() {
         int numeroBloques = GameObject.FindGameObjectsWithTag("block").Length;
+    }
+    public void addPoints() {
+        this.points += 100;
     }
 }

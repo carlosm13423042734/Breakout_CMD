@@ -35,12 +35,12 @@ public class Block : MonoBehaviour, IDamagable
         this.hits--;
         if (this.hits <= 0) {
             Destroy(this.gameObject);
+            GameManager.Instance.addPoints();
             this.spriteRenderer = GetComponent<SpriteRenderer>();
             this.powerUp = PowerUpFactory.CreatePowerUp();
             GenerarBloque();
            
         }
-        GameManager.Instance.CountBlocks();
         
     }
     
